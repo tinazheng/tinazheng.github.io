@@ -4,8 +4,9 @@
 </head>
 <body>
   <div id="content">
+    <img class="kitty" src="https://www.animatedimages.org/data/media/209/animated-cat-image-0305.gif" border="0" alt="animated-cat-image-0305" />
     <img class="peppa" src="./peppa.png" />
-    hi! i'm tina.
+    hi! i'm <span class="tina">tina</span>.
     <br /><br />
     i am a software engineer based in san francisco. my code lives in: <br/>
     <a href="https://www.meetkaruna.com/">karuna health</a><br/>
@@ -16,7 +17,7 @@
     <a href="https://climate.com/">the climate corp</a>
     <br /><br />
     i am also good at: probability (taught CS 70 at berkeley for 2 semesters), speed typing (record of 205 wpm)<br/><br/>
-    <a href="https://twitter.com/patagucci_girl">twitter</a><br /><br/><br/>
+    <a class="twitter" href="https://twitter.com/patagucci_girl"><i>@@@@ FOLLOW ME ON TWITTER @@@@</i></a><br /><br/><br/>
     <b>Some of my favorite things on the internet</b> <br  />
     <a href="https://www.newyorker.com/culture/culture-desk/crying-in-h-mart">Crying in H Mart by Michelle Zauner</a><br/>
     <a href="https://www.youtube.com/watch?v=sNx57atloH8">tomato anxiety</a><br/>
@@ -201,10 +202,16 @@ body {
   cursor: url("http://downloads.totallyfreecursors.com/cursor_files/unicorn.ani"), url("http://downloads.totallyfreecursors.com/thumbnails/unicorn.gif"), auto;
 }
 
-img {
-  width: 30px;
+.twitter {
+  color: red;
+  font-size: 30px;
 }
 
+.kitty {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+}
 .peppa {
   position: absolute;
   right: 0;
