@@ -1,96 +1,40 @@
 <head>
-  <style>
-    html, body {
-        font-family: "Avenir", sans-serif;
-        background-color: #222;
-        color: #eee;
-        font-size: 18px;
-        line-height: 1.6;
-
-        display: flex;
-        flex-flow: row;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .example-item {
-        text-align: center;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(0.4);
-        opacity: 0  }
-
-      33% {
-        transform: scale(1);
-        opacity: 0.6;
-      }
-      100% {
-        transform: scale(1.4);
-        opacity: 0;
-      }
-}
-    .pulsate-containier {
-      position: relative;
-
-    }
-    .pulsate-css {
-        border: 10px solid #6c5ce7;
-        background-color: #6c5ce7;
-        border-radius: 50%;
-        position: absolute;
-        display: inline-block;
-        transform: scale(1);
-        opacity: 0.0;
-        margin-top: 20px;
-        text-align: center;
-        width: 200px;
-        height: 200px;
-        left: 50%;
-        margin-left: -100px;
-        top: 50%;
-        margin-top: -100px;
-    }
-
-    .pulsate-1 {
-      animation: pulse 4s infinite linear;
-    }
-
-    .pulsate-2 {
-      animation: pulse 4s 1s infinite linear;
-    }
-
-    .pulsate-3 {
-      animation: pulse 4s 2s infinite linear;
-    }
-
-    .pulsate-4 {
-      animation: pulse 4s 3s infinite linear;
-    }
-
-    .pulsate-base {
-      border: 10px solid #6c5ce7;
-      background-color: #6c5ce7;
-      border-radius: 50%;
-      position: absolute;
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      left: 50%;
-      margin-left: -20px;
-      top: 50%;
-      margin-top: -20px;
-      z-index: 100;
-    }
-
-
-  </style>
+  <script src="matter.js"></script>
+  <link rel="stylesheet" type="text/css" href="ttyl.css">
 </head>
 <body>
-  <div class="pulsate-base"></div>
-  <div class="example-item pulsate-css pulsate-1"></div>
-  <div class="example-item pulsate-css pulsate-2"></div>
-  <div class="example-item pulsate-css pulsate-3"></div>
-  <div class="example-item pulsate-css pulsate-4"></div>
+  <img class="ttyl-logo" src="./ttyl_white.png" />
+  <div class="ttyl-description-container">
+    <div class="ttyl-description">Headphones On</div>
+    <a href="google.com" class="ttyl-link">Download the App</a>
+  </div>
+  <div class="ttyl-footer-container">
+    <div class="ttyl-footer-links">
+      <div class="ttyl-copyright">© TTYL 2019. All Rights Reserved.</div>
+      <a class="ttyl-legal">Terms</a>
+      <a class="ttyl-legal">Privacy</a>
+      <a class="ttyl-legal" href="https://angel.co/company/ttyl">Jobs</a>
+    </div>
+    <div class="ttyl-footer-social">
+      <a class="ttyl-social-icon" href="https://www.instagram.com/ttyl_app/">
+        <div class="icon instagram"></div>
+      </a>
+      <a class="ttyl-social-icon" href="https://twitter.com/ttylapp">
+        <div class="icon twitter"></div>
+      </a>
+      <a class="ttyl-social-icon" href="https://discord.gg/7jQAH6E">
+        <div class="icon discord"></div>
+      </a>
+    </div>
+  </div>
+  <div id="pulse-container">
+    <div id="pulse-rings">
+      <div id="ring" class="pulsate-base"></div>
+      <div class="pulsate-css pulsate-1"></div>
+      <div class="pulsate-css pulsate-2"></div>
+      <div class="pulsate-css pulsate-3"></div>
+      <div class="pulsate-ring"></div>
+    </div>
+  </div>
+  <script src="pulse.js"></script>
 </body>
