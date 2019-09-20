@@ -1,62 +1,50 @@
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
-  const { Engine, Render, World, Bodies, Body, Runner, Composite } = Matter;
-  const airpodBody = {
-    position: { x: 300, y: 400 },
-    mass: 20,
-    isSensor: false,
-    density: 20,
-    restitution: 0.6,
-    slop: 0.2,
-    vertices:[
-      { "x":22, "y":10 }, { "x":13, "y":8 }, { "x":7, "y":10 }, { "x":2, "y":17 }, { "x":2, "y":26 }, { "x":11, "y":62 }, { "x":38, "y":71 }, { "x":27, "y":17 },
-      { "x":65, "y":122 }, { "x":73, "y":112 }, { "x":38, "y":71 }, { "x":11, "y":62 }, { "x":19, "y":104 }, { "x":24, "y":116 }, { "x":40, "y":127 }, { "x":55, "y":127 },
-      { "x":31, "y":123 }, { "x":40, "y":127 }, { "x":24, "y":116 },
-      { "x":4, "y":13 }, { "x":2, "y":17 }, { "x":7, "y":10 },
-      { "x":38, "y":71 }, { "x":73, "y":112 }, { "x":75, "y":106 }, { "x":74, "y":89 }, { "x":63, "y":75 }, { "x":59, "y":73 }, { "x":53, "y":71 },
-      { "x":71, "y":83 }, { "x":63, "y":75 }, { "x":74, "y":89 }
-    ],
-    render: {
-      sprite: {
-        texture: './AirPod.png',
-      }
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
+const { Engine, Render, World, Bodies, Body, Runner, Composite } = Matter;
+const airpodBody = {
+  position: { x: 300, y: 400 },
+  mass: 20,
+  isSensor: false,
+  density: 20,
+  restitution: 0.6,
+  slop: 0.2,
+  vertices:[
+    { "x":22, "y":10 }, { "x":13, "y":8 }, { "x":7, "y":10 }, { "x":2, "y":17 }, { "x":2, "y":26 }, { "x":11, "y":62 }, { "x":38, "y":71 }, { "x":27, "y":17 },
+    { "x":65, "y":122 }, { "x":73, "y":112 }, { "x":38, "y":71 }, { "x":11, "y":62 }, { "x":19, "y":104 }, { "x":24, "y":116 }, { "x":40, "y":127 }, { "x":55, "y":127 },
+    { "x":31, "y":123 }, { "x":40, "y":127 }, { "x":24, "y":116 },
+    { "x":4, "y":13 }, { "x":2, "y":17 }, { "x":7, "y":10 },
+    { "x":38, "y":71 }, { "x":73, "y":112 }, { "x":75, "y":106 }, { "x":74, "y":89 }, { "x":63, "y":75 }, { "x":59, "y":73 }, { "x":53, "y":71 },
+    { "x":71, "y":83 }, { "x":63, "y":75 }, { "x":74, "y":89 }
+  ],
+  render: {
+    sprite: {
+      texture: './AirPod.png',
     }
-  };
-
-  const wallOptions = {
-    isStatic: true,
-    render: { visible: false },
   }
+};
 
-  // create an engine
-  var engine = Engine.create({
-    positionIterations: 10,
-    velocityIterations: 10,
-  });
+const wallOptions = {
+  isStatic: true,
+  render: { visible: false },
+}
 
-  // create a renderer
-  var render = Render.create({
-    element: document.body,
-    engine: engine,
-    options: {
-      width: windowWidth,
-      height: windowHeight,
-      wireframes: false,
-      background: 'transparent',
-    }
-  });
+// create an engine
+var engine = Engine.create({
+  positionIterations: 10,
+  velocityIterations: 10,
+});
 
-  var ball = Matter.Bodies.circle(250, 250, 50, {
-		density: 0.04,
-		friction: 0.01,
-        frictionAir: 0.00001,
-        restitution: 0.8,
-        render: {
-            fillStyle: '#F35e66',
-            strokeStyle: 'black',
-            lineWidth: 1
-        }
-	});
+// create a renderer
+var render = Render.create({
+  element: document.body,
+  engine: engine,
+  options: {
+    width: windowWidth,
+    height: windowHeight,
+    wireframes: false,
+    background: 'transparent',
+  }
+});
 
 const distanceToBase = 200;
 const originalGravity = engine.world.gravity.y;
@@ -88,11 +76,12 @@ const airpod2 = Body.create({
 Body.rotate(airpod2, 5);
 
 const boundaryWidth = 10;
+const groundHeight = 95;
 
 const ceiling = Bodies.rectangle(windowWidth / 2, boundaryWidth / 2, windowWidth, boundaryWidth, wallOptions);
-const ground = Bodies.rectangle(windowWidth / 2, windowHeight - (boundaryWidth / 2), windowWidth, boundaryWidth, wallOptions);
-const rightWall = Bodies.rectangle(windowWidth - (boundaryWidth / 2), windowHeight / 2, boundaryWidth, windowHeight - (2 * boundaryWidth), wallOptions);
-const leftWall = Bodies.rectangle(boundaryWidth / 2, windowHeight / 2, boundaryWidth, windowHeight - (2 * boundaryWidth), wallOptions);
+const ground = Bodies.rectangle(windowWidth / 2, windowHeight - (boundaryWidth / 2), windowWidth, groundHeight, wallOptions);
+const rightWall = Bodies.rectangle(windowWidth - (boundaryWidth / 2), windowHeight / 2, boundaryWidth, windowHeight - (boundaryWidth + groundHeight), wallOptions);
+const leftWall = Bodies.rectangle(boundaryWidth / 2, windowHeight / 2, boundaryWidth, windowHeight - (boundaryWidth + groundHeight), wallOptions);
 
 World.add(engine.world, [airpod1, airpod2]);
 
@@ -102,9 +91,20 @@ var hasShotAirpods = false;
 const expandedRings = [];
 const maxNumRings = 10;
 
+const ZERO_VELOCITY = { x: 0, y: 0 };
+const FOUR_SECONDS = 4000;
+const HALF_SECOND = 500;
+
 const shootOutAirpods = () => {
   Body.applyForce(airpod1, { x: airpod1.position.x, y: airpod1.position.y }, { x: 2, y: -2 });
   Body.applyForce(airpod2, { x: airpod2.position.x, y: airpod2.position.y }, { x: -4, y: -2 });
+
+  setTimeout(() => {
+    if (!isGoingBack) {
+      Body.setVelocity(airpod1, ZERO_VELOCITY);
+      Body.setVelocity(airpod2, ZERO_VELOCITY);
+    }
+  }, FOUR_SECONDS);
   hasShotAirpods = true;
 }
 
@@ -118,7 +118,7 @@ const isStill = (body) => body.speed > 0.01 && body.speed < STILL_SPEED_THRESHOL
 const isWithinPositionRange = (first, second) => Math.abs(first.x - second.x) < POS_THRESHOLD && Math.abs(first.y - second.y) < POS_THRESHOLD;
 
 
-const doStuff = () => {
+const onClick = () => {
   isLanding = true;
   isGoingBack = false;
 
@@ -156,15 +156,13 @@ function onMouseMove(e) {
 
 engine.world.gravity.y = 0;
 
-const ZERO_VELOCITY = { x: 0, y: 0 };
-const HALF_SECOND = 500;
-
 function updateRotation() {
   if (isLanding) {
     if (isStill(airpod1) && isStill(airpod2)) {
       setTimeout(() => {
         isLanding = false;
         isGoingBack = true;
+        [ground, ceiling, rightWall, leftWall].forEach(body => Composite.remove(engine.world, body));
       }, HALF_SECOND);
     }
   }
@@ -192,7 +190,6 @@ function updateRotation() {
         isGoingBack = false;
         hasShotAirpods = false;
         engine.world.gravity.y = 0;
-        [ground, ceiling, rightWall, leftWall].forEach(body => Composite.remove(engine.world, body));
         Body.setVelocity(airpod1, ZERO_VELOCITY);
         Body.setVelocity(airpod2, ZERO_VELOCITY);
       } else {
@@ -235,12 +232,9 @@ function updateRotation() {
 
 window.requestAnimationFrame(updateRotation);
 
-window.addEventListener('click', doStuff);
+window.addEventListener('click', onClick);
 window.addEventListener('mousemove', onMouseMove);
 
 Runner.create({ isFixed: true });
-// run the engine
 Runner.run(engine);
-
-// run the renderer
 Render.run(render);
