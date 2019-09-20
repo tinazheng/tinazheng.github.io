@@ -267,3 +267,18 @@ canvas {
   background-image: url('./discord-purple.svg');
   transition: all 0.5s ease;
 }
+
+p {
+  font-weight: normal;
+  font-size: 12px;
+}
+
+h5 {
+  color: #ADABBA;
+}
+
+.content {
+  background-color: white;
+  color: black;
+  padding: 25px 70px;
+}

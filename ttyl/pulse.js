@@ -193,8 +193,8 @@ function updateRotation() {
         Body.setVelocity(airpod1, ZERO_VELOCITY);
         Body.setVelocity(airpod2, ZERO_VELOCITY);
       } else {
-        const velocity1 = { x: (airpod1XPos - airpod1.position.x) / 15, y: (airpod1YPos - airpod1.position.y) / 15};
-        const velocity2 = { x: (airpod2XPos - airpod2.position.x) / 15, y: (airpod2YPos - airpod2.position.y) / 15};
+        const velocity1 = { x: (airpod1XPos - airpod1.position.x) / 10, y: (airpod1YPos - airpod1.position.y) / 10};
+        const velocity2 = { x: (airpod2XPos - airpod2.position.x) / 10, y: (airpod2YPos - airpod2.position.y) / 10};
 
         Body.setVelocity(airpod1, velocity1);
         Body.setVelocity(airpod2, velocity2);
