@@ -270,7 +270,7 @@ canvas {
 
 p {
   font-weight: normal;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 h5 {
@@ -281,4 +281,21 @@ h5 {
   background-color: white;
   color: black;
   padding: 25px 70px;
+}
+
+@media only screen and (max-width: 500px) {
+  .indented {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .indented {
+    margin-left: 40px;
+  }
+}
+
+.indented {
+  font-weight: normal;
+  font-size: 14px;
 }
