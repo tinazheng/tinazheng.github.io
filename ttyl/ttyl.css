@@ -19,13 +19,18 @@ html, body {
   font-weight: bold;
   color: #eee;
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.25;
   margin: 0;
   background: rgb(105,25,230);
   background: linear-gradient(180deg, rgba(105,25,230,1) 0%, rgba(72,29,225,1) 100%);
 
   display: flex;
   flex-flow: column;
+}
+
+.ttyl-header {
+  background: rgb(105,25,230);
+  background: linear-gradient(180deg, rgba(105,25,230,1) 0%, rgba(72,29,225,1) 100%);
 }
 
 canvas {
@@ -148,6 +153,10 @@ canvas {
   width: 100px;
   margin-left: 20px;
   margin-top: 10px;
+}
+
+.logo {
+  width: 100px;
 }
 
 .ttyl-description-container {
@@ -280,7 +289,7 @@ h5 {
 .content {
   background-color: white;
   color: black;
-  padding: 25px 70px;
+  padding: 25px 12.5%;
 }
 
 @media only screen and (max-width: 500px) {
@@ -295,7 +304,28 @@ h5 {
   }
 }
 
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h5 {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+p {
+  font-size: 16px;
+}
+
 .indented {
   font-weight: normal;
-  font-size: 14px;
+  font-size: 16px;
 }
