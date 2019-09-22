@@ -3,7 +3,7 @@ const windowHeight = window.innerHeight;
 const { Engine, Render, World, Bodies, Body, Runner, Composite } = Matter;
 const airpodBody = {
   position: { x: 300, y: 400 },
-  mass: 15,
+  mass: 20,
   isSensor: false,
   restitution: 0.6,
   slop: 0.2,
@@ -95,8 +95,8 @@ const FOUR_SECONDS = 4000;
 const HALF_SECOND = 500;
 
 const shootOutAirpods = () => {
-  Body.applyForce(airpod1, { x: airpod1.position.x, y: airpod1.position.y }, { x: 2, y: -2 });
-  Body.applyForce(airpod2, { x: airpod2.position.x, y: airpod2.position.y }, { x: -4, y: -2 });
+  Body.applyForce(airpod1, { x: airpod1.position.x, y: airpod1.position.y }, { x: 1.5, y: -1.5 });
+  Body.applyForce(airpod2, { x: airpod2.position.x, y: airpod2.position.y }, { x: -2, y: -1.5 });
 
   setTimeout(() => {
     if (!isGoingBack) {
@@ -238,8 +238,10 @@ function updateRotation() {
 
 window.requestAnimationFrame(updateRotation);
 
-window.addEventListener('click', onClick);
-window.addEventListener('mousemove', onMouseMove);
+if (window.screen.width > 500) {
+  window.addEventListener('click', onClick);
+  window.addEventListener('mousemove', onMouseMove);
+}
 
 Runner.create({ isFixed: true });
 Runner.run(engine);

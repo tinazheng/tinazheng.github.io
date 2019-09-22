@@ -14,7 +14,7 @@
   font-weight: bold;
 }
 
-html, body {
+body {
   font-family: "Proxima Soft", sans-serif;
   font-weight: bold;
   color: #eee;
@@ -26,6 +26,7 @@ html, body {
 
   display: flex;
   flex-flow: column;
+  justify-content: space-between;
 }
 
 .ttyl-header {
@@ -141,7 +142,7 @@ canvas {
 
 #pulse-container {
   position: absolute;
-  top: 0;
+  top: 40vh;
   left: 0;
 }
 
@@ -149,10 +150,33 @@ canvas {
   position: relative;
 }
 
-.ttyl-logo {
+@media screen and (max-width: 500px) {
+  #pulse-container {
+    top: 40vh;
+    right: 0;
+    left: auto;
+  }
+}
+
+.ttyl-logo > img {
   width: 100px;
   margin-left: 20px;
   margin-top: 10px;
+}
+
+.ttyl-logo {
+  display: flex;
+  flex-flow: row;
+}
+
+@media screen and (max-width: 500px) {
+  .ttyl-logo {
+    justify-content: center;
+  }
+
+  .ttyl-logo > img {
+    margin: 0;
+  }
 }
 
 .logo {
@@ -168,6 +192,13 @@ canvas {
   align-items: center;
   margin-bottom: 100px;
   z-index: 1000;
+}
+
+@media screen and (max-width: 500px) {
+  .ttyl-description-container {
+    flex: none;
+    height: calc(100vh - 100px);
+  }
 }
 
 .ttyl-description {
@@ -188,13 +219,45 @@ canvas {
   cursor: pointer;
 }
 
-.ttyl-footer-container {
+.footer-web {
   display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: space-between;
-  font-size: 14px;
   height: 50px;
+}
+
+.footer-mobile {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+}
+
+.footer-mobile > div {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  padding: 10px;
+}
+
+.footer-mobile .ttyl-legal {
+  margin: 0 20px
+}
+
+@media screen and (min-width: 500px) {
+  .footer-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer-web {
+    display: none;
+  }
+}
+
+.ttyl-footer-container {
+  font-size: 14px;
   align-self: stretch;
   background-color: #F6F6F9;
   color: black;
