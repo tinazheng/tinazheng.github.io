@@ -3,9 +3,8 @@ const windowHeight = window.innerHeight;
 const { Engine, Render, World, Bodies, Body, Runner, Composite } = Matter;
 const airpodBody = {
   position: { x: 300, y: 400 },
-  mass: 20,
+  mass: 15,
   isSensor: false,
-  density: 20,
   restitution: 0.6,
   slop: 0.2,
   vertices:[
@@ -112,9 +111,10 @@ var airpodAngleOffset = 0; // in radians. for reference, 360 degree is 2 * Math.
 const angleOffsetPerTimestep = (2 * Math.PI) / 1000;
 const radius = 200;
 const STILL_SPEED_THRESHOLD = 0.3 // anything less than speed of 0.3 is considered stationery
+const TRIVIAL_VELOCITY = { x: 0.001, y: 0.0001 } // acts like zero, isn't zero
 const POS_THRESHOLD = 5;
 
-const isStill = (body) => body.speed > 0.01 && body.speed < STILL_SPEED_THRESHOLD;
+const isStill = (body) => body.speed > 0.0001 && body.speed < STILL_SPEED_THRESHOLD;
 const isWithinPositionRange = (first, second) => Math.abs(first.x - second.x) < POS_THRESHOLD && Math.abs(first.y - second.y) < POS_THRESHOLD;
 
 
@@ -158,6 +158,12 @@ engine.world.gravity.y = 0;
 
 function updateRotation() {
   if (isLanding) {
+    if (isStill(airpod1)) {
+      Body.setVelocity(airpod1, TRIVIAL_VELOCITY);
+    }
+    if (isStill(airpod2)) {
+      Body.setVelocity(airpod2, TRIVIAL_VELOCITY);
+    }
     if (isStill(airpod1) && isStill(airpod2)) {
       setTimeout(() => {
         isLanding = false;
