@@ -207,7 +207,6 @@ canvas {
 .ttyl-logo {
   display: flex;
   flex-flow: row;
-  justify-content: center;
   flex: 1;
 }
 
