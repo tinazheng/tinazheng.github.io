@@ -97,8 +97,8 @@ canvas {
   }
 
   33% {
-    transform: scale(20);
-    opacity: 0.5;
+    transform: scale(25);
+    opacity: 0.8;
   }
 
   100% {
