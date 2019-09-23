@@ -223,6 +223,7 @@ function updateAirpodsLocation() {
   // logic to rotate airpods around in a circle
   if (!isLanding && !isGoingBack) {
     const ringCoordinates = document.getElementById('ring').getBoundingClientRect();
+    console.log(ringCoordinates);
     const x = (ringCoordinates.right + ringCoordinates.left) / 2;
     const y = (ringCoordinates.top + ringCoordinates.bottom) / 2;
 
