@@ -30,6 +30,7 @@ html, body {
   margin: 0;
   background: rgb(105,25,230);
   background: linear-gradient(180deg, rgba(105,25,230,1) 0%, rgba(72,29,225,1) 100%);
+  background-repeat: no-repeat;
 
   display: flex;
   flex-flow: column;
@@ -148,6 +149,7 @@ canvas {
 
 .pulsate-base {
   border: 2px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   border-radius: 50%;
   -webkit-border-radius: 50%;
