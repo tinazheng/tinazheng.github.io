@@ -260,7 +260,6 @@ function updateAirpodsLocation() {
 window.requestAnimationFrame(updateAirpodsLocation);
 
 if (window.screen.width > 500) {
-  console.log("Screen width more than 500", window.screen.width);
   window.addEventListener('click', onClick);
   window.addEventListener('mousemove', onMouseMove);
 }
