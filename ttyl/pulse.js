@@ -114,7 +114,7 @@ const FOUR_SECONDS = 4000;
 const HALF_SECOND = 500;
 
 const shootOutAirpods = () => {
-  Body.applyForce(airpod1, { x: airpod1.position.x, y: airpod1.position.y }, { x: 1.0, y: -1.5 });
+  Body.applyForce(airpod1, { x: airpod1.position.x, y: airpod1.position.y }, { x: 1.5, y: -1.5 });
   Body.applyForce(airpod2, { x: airpod2.position.x, y: airpod2.position.y }, { x: -0.5, y: -1.0 });
 
   setTimeout(() => {
