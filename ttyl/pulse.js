@@ -1,3 +1,10 @@
+const socialImages = ['./discord-purple.svg', 'instagram-purple.svg', 'twitter-purple.svg'];
+socialImages.forEach(imageSrc => {
+  const img = new Image();
+  img.src = imageSrc;
+})
+
+
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const { Engine, Render, World, Bodies, Body, Runner, Composite } = Matter;
