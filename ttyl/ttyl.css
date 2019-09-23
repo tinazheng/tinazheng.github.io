@@ -96,6 +96,8 @@ canvas {
 .pulsate-css {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     position: absolute;
     display: inline-block;
     opacity: 0.0;
