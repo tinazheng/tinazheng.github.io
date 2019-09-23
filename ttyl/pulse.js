@@ -1,26 +1,52 @@
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const { Engine, Render, World, Bodies, Body, Runner, Composite } = Matter;
-const airpodBody = {
-  position: { x: 300, y: 400 },
+const airpod1Body = {
   mass: 20,
   isSensor: false,
   restitution: 0.6,
   slop: 0.2,
-  vertices:[
+  vertices: [
     { "x":22, "y":10 }, { "x":13, "y":8 }, { "x":7, "y":10 }, { "x":2, "y":17 }, { "x":2, "y":26 }, { "x":11, "y":62 }, { "x":38, "y":71 }, { "x":27, "y":17 },
     { "x":65, "y":122 }, { "x":73, "y":112 }, { "x":38, "y":71 }, { "x":11, "y":62 }, { "x":19, "y":104 }, { "x":24, "y":116 }, { "x":40, "y":127 }, { "x":55, "y":127 },
     { "x":31, "y":123 }, { "x":40, "y":127 }, { "x":24, "y":116 },
     { "x":4, "y":13 }, { "x":2, "y":17 }, { "x":7, "y":10 },
-    { "x":38, "y":71 }, { "x":73, "y":112 }, { "x":75, "y":106 }, { "x":74, "y":89 }, { "x":63, "y":75 }, { "x":59, "y":73 }, { "x":53, "y":71 },
-    { "x":71, "y":83 }, { "x":63, "y":75 }, { "x":74, "y":89 }
+    { "x":38, "y":71 }, { "x":73, "y":112 }, { "x":75, "y":106 }, { "x":59, "y":73 }, { "x":53, "y":71 },
+    { "x":71, "y":83 }, { "x":59, "y":73 }, { "x":75, "y":106 }, { "x":74, "y":89 }
   ],
+
   render: {
     sprite: {
-      texture: './AirPod.png',
+      texture: './AirPod_L.svg',
     }
   }
 };
+
+const airpod2Body = {
+  mass: 10,
+  isSensor: false,
+  restitution: 0.6,
+  vertices: [
+					{ "x":5, "y":71 }, { "x":13, "y":77 }, { "x":21, "y":77 }, { "x":30, "y":71 }, { "x":30, "y":43 }, { "x":11, "y":52 }, { "x":6, "y":56 }, { "x":4, "y":63 },
+					{ "x":30, "y":71 }, { "x":48, "y":61 }, { "x":39, "y":38 }, { "x":30, "y":43 },
+					{ "x":48, "y":61 }, { "x":70, "y":49 }, { "x":59, "y":27 }, { "x":39, "y":38 },
+					{ "x":59, "y":27 }, { "x":70, "y":49 }, { "x":80, "y":61 }, { "x":77, "y":17 },
+					{ "x":77, "y":17 }, { "x":80, "y":61 }, { "x":89, "y":65 }, { "x":116, "y":59 }, { "x":121, "y":53 }, { "x":122, "y":23 }, { "x":100, "y":9 }, { "x":89, "y":10 },
+					{ "x":114, "y":14 }, { "x":100, "y":9 }, { "x":122, "y":23 },
+					{ "x":105, "y":65 }, { "x":116, "y":59 }, { "x":89, "y":65 },
+					{ "x":125, "y":43 }, { "x":125, "y":31 }, { "x":122, "y":23 }, { "x":121, "y":53 }
+				],
+  render: {
+    sprite: {
+      fillStyle: 'red',
+      texture: './AirPod_R.svg',
+
+      // image slightly off from vertices ?! 
+      xOffset: 0,
+      yOffset: -0.15,
+    }
+  }
+}
 
 const wallOptions = {
   isStatic: true,
@@ -57,7 +83,7 @@ const airpod2StartX = airpod1StartX - distanceToBase;
 const airpod2StartY = airpod1StartY + distanceToBase;
 
 const airpod1 = Body.create({
-  ...airpodBody,
+  ...airpod1Body,
   position: {
     x: airpod1StartX,
     y: airpod1StartY,
@@ -65,14 +91,12 @@ const airpod1 = Body.create({
 });
 
 const airpod2 = Body.create({
-  ...airpodBody,
+  ...airpod2Body,
   position: {
     x: airpod2StartX,
     y: airpod2StartY,
   }
 });
-
-Body.rotate(airpod2, 5);
 
 const boundaryWidth = 10;
 const groundHeight = 95;
@@ -95,8 +119,8 @@ const FOUR_SECONDS = 4000;
 const HALF_SECOND = 500;
 
 const shootOutAirpods = () => {
-  Body.applyForce(airpod1, { x: airpod1.position.x, y: airpod1.position.y }, { x: 1.5, y: -1.5 });
-  Body.applyForce(airpod2, { x: airpod2.position.x, y: airpod2.position.y }, { x: -2, y: -1.5 });
+  Body.applyForce(airpod1, { x: airpod1.position.x, y: airpod1.position.y }, { x: 1.0, y: -1.5 });
+  Body.applyForce(airpod2, { x: airpod2.position.x, y: airpod2.position.y }, { x: -0.5, y: -1.0 });
 
   setTimeout(() => {
     if (!isGoingBack) {
@@ -119,18 +143,19 @@ const isWithinPositionRange = (first, second) => Math.abs(first.x - second.x) < 
 
 
 const onClick = () => {
-  isLanding = true;
-  isGoingBack = false;
+  if (!isLanding && !isGoingBack) {
+    isLanding = true;
 
-  // add boundaries to the scene so that airpods can bounce off walls
-  World.add(engine.world, [ground, ceiling, rightWall, leftWall]);
+    // add boundaries to the scene so that airpods can bounce off walls
+    World.add(engine.world, [ground, ceiling, rightWall, leftWall]);
 
-  if (!hasShotAirpods && !isGoingBack) {
-    shootOutAirpods();
+    if (!hasShotAirpods) {
+      shootOutAirpods();
+    }
+
+    // add gravity into the scene so that airpods fall naturally
+    engine.world.gravity.y = originalGravity;
   }
-
-  // add gravity into the scene so that airpods fall naturally
-  engine.world.gravity.y = originalGravity;
 
   // garbage collect pulse-rings that have already been emitted
   if (expandedRings.length > maxNumRings) {
@@ -156,14 +181,8 @@ function onMouseMove(e) {
 
 engine.world.gravity.y = 0;
 
-function updateRotation() {
+function updateAirpodsLocation() {
   if (isLanding) {
-    if (isStill(airpod1)) {
-      Body.setVelocity(airpod1, TRIVIAL_VELOCITY);
-    }
-    if (isStill(airpod2)) {
-      Body.setVelocity(airpod2, TRIVIAL_VELOCITY);
-    }
     if (isStill(airpod1) && isStill(airpod2)) {
       setTimeout(() => {
         isLanding = false;
@@ -212,6 +231,7 @@ function updateRotation() {
     const x = (ringCoordinates.right + ringCoordinates.left) / 2;
     const y = (ringCoordinates.top + ringCoordinates.bottom) / 2;
 
+    // angle of coordinates of airpods relative to circle they're traveling in (top center is 0 degrees)
     airpodAngleOffset = (airpodAngleOffset + angleOffsetPerTimestep) % (2 * Math.PI);
 
     const airpod1OffsetX = Math.cos(airpodAngleOffset) * radius;
@@ -229,14 +249,17 @@ function updateRotation() {
     Body.setPosition(airpod1, { x: airpod1XPos, y: airpod1YPos });
     Body.setPosition(airpod2, { x: airpod2XPos, y: airpod2YPos });
 
-    Body.rotate(airpod1, 0.02);
-    Body.rotate(airpod2, 0.02);
+    // Body.rotate(airpod1, 0.02);
+    // Body.rotate(airpod2, 0.02);
   }
 
-  window.requestAnimationFrame(updateRotation);
+  window.requestAnimationFrame(updateAirpodsLocation);
 }
 
-window.requestAnimationFrame(updateRotation);
+window.requestAnimationFrame(updateAirpodsLocation);
+
+console.log('airpod1.area', airpod1.area);
+console.log('airpod2.area', airpod2.area);
 
 if (window.screen.width > 500) {
   window.addEventListener('click', onClick);
