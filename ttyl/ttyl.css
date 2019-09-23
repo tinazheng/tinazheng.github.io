@@ -16,18 +16,17 @@
 
 html, body {
   margin: 0;
+  font-family: "Proxima Soft", sans-serif;
+  font-weight: bold;
+  color: #eee;
+  font-size: 18px;
+  line-height: 1.25;
 }
 
 .container {
   width: 100vw;
   height: 100%;
   position: fixed;
-
-  font-family: "Proxima Soft", sans-serif;
-  font-weight: bold;
-  color: #eee;
-  font-size: 18px;
-  line-height: 1.25;
   margin: 0;
   background: rgb(105,25,230);
   background: linear-gradient(180deg, rgba(105,25,230,1) 0%, rgba(72,29,225,1) 100%);
@@ -38,7 +37,7 @@ html, body {
   overflow-x: hidden;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 501px) {
   .container {
     overflow-y: hidden;
   }
@@ -200,8 +199,8 @@ canvas {
 
 .ttyl-logo > img {
   width: 100px;
-  margin-left: 20px;
-  margin-top: 10px;
+  /* margin-left: 20px;
+  margin-top: 10px; */
 }
 
 .ttyl-logo {
@@ -292,7 +291,7 @@ canvas {
   margin: 0 20px
 }
 
-@media screen and (min-width: 499px) {
+@media screen and (min-width: 501px) {
   .footer-mobile {
     display: none;
   }
@@ -406,7 +405,7 @@ p {
   }
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 501px) {
   .indented {
     margin-left: 40px;
   }
