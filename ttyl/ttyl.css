@@ -27,7 +27,15 @@ body {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  overflow-x: hidden;
 }
+
+@media screen and (min-width: 500px) {
+  body {
+    overflow-y: hidden;
+  }
+}
+
 
 .ttyl-header {
   background: rgb(105,25,230);
@@ -244,7 +252,7 @@ canvas {
   margin: 0 20px
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 499px) {
   .footer-mobile {
     display: none;
   }

@@ -1,6 +1,7 @@
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const { Engine, Render, World, Bodies, Body, Runner, Composite } = Matter;
+
 const airpod1Body = {
   mass: 20,
   isSensor: false,
@@ -41,7 +42,7 @@ const airpod2Body = {
       fillStyle: 'red',
       texture: './AirPod_R.svg',
 
-      // image slightly off from vertices ?! 
+      // image slightly off from vertices ?!
       xOffset: 0,
       yOffset: -0.15,
     }
@@ -249,8 +250,8 @@ function updateAirpodsLocation() {
     Body.setPosition(airpod1, { x: airpod1XPos, y: airpod1YPos });
     Body.setPosition(airpod2, { x: airpod2XPos, y: airpod2YPos });
 
-    // Body.rotate(airpod1, 0.02);
-    // Body.rotate(airpod2, 0.02);
+    Body.rotate(airpod1, 0.02);
+    Body.rotate(airpod2, 0.02);
   }
 
   window.requestAnimationFrame(updateAirpodsLocation);
@@ -258,10 +259,8 @@ function updateAirpodsLocation() {
 
 window.requestAnimationFrame(updateAirpodsLocation);
 
-console.log('airpod1.area', airpod1.area);
-console.log('airpod2.area', airpod2.area);
-
 if (window.screen.width > 500) {
+  console.log("Screen width more than 500", window.screen.width);
   window.addEventListener('click', onClick);
   window.addEventListener('mousemove', onMouseMove);
 }
