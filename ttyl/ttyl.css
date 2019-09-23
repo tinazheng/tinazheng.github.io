@@ -16,12 +16,12 @@
 
 body {
   margin: 0;
-  overflow-x: hidden;
 }
 
 .container {
   height: 100vh;
   width: 100vw;
+  position: fixed;
 
   font-family: "Proxima Soft", sans-serif;
   font-weight: bold;
