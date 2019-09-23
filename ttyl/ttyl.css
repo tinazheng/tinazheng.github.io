@@ -199,13 +199,16 @@ canvas {
 
 .ttyl-logo > img {
   width: 100px;
-  /* margin-left: 20px;
-  margin-top: 10px; */
+  height: 100px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .ttyl-logo {
   display: flex;
   flex-flow: row;
+  justify-content: center;
+  flex: 1;
 }
 
 @media screen and (max-width: 500px) {
@@ -215,7 +218,6 @@ canvas {
 
   .ttyl-logo > img {
     margin: 0;
-    width: 30%;
   }
 }
 
@@ -230,15 +232,19 @@ canvas {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 100px;
   z-index: 1000;
 }
 
 @media screen and (max-width: 500px) {
   .ttyl-description-container {
     flex: none;
-    height: calc(100vh - 100px);
+    height: 100vh;
+    margin-bottom: 0;
   }
+}
+
+.ttyl-link {
+  margin-bottom: 150px;
 }
 
 .ttyl-description {
@@ -278,6 +284,7 @@ canvas {
   display: flex;
   flex-flow: column;
   align-items: stretch;
+  flex: 1;
 }
 
 .footer-mobile > div {
@@ -297,18 +304,22 @@ canvas {
   }
 }
 
-@media screen and (max-width: 500px) {
-  .footer-web {
-    display: none;
-  }
-}
-
 .ttyl-footer-container {
   font-size: 14px;
   align-self: stretch;
   background-color: #F6F6F9;
   color: black;
   z-index: 1000;
+}
+
+@media screen and (max-width: 500px) {
+  .footer-web {
+    display: none;
+  }
+  .ttyl-footer-container {
+    min-height: 120px;
+    flex: 1;
+  }
 }
 
 .ttyl-footer-container a {
