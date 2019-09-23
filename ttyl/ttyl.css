@@ -207,7 +207,6 @@ canvas {
 .ttyl-logo {
   display: flex;
   flex-flow: row;
-  flex: 1;
 }
 
 @media screen and (max-width: 500px) {
@@ -243,7 +242,7 @@ canvas {
 }
 
 .ttyl-link {
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
 
 .ttyl-description {
