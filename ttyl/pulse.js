@@ -83,21 +83,15 @@ const airpod1StartY = ((base.top + base.bottom) / 2) - distanceToBase;
 const airpod2StartX = airpod1StartX - distanceToBase;
 const airpod2StartY = airpod1StartY + distanceToBase;
 
-const airpod1 = Body.create({
-  ...airpod1Body,
-  position: {
-    x: airpod1StartX,
-    y: airpod1StartY,
-  }
-});
+const airpod1 = Body.create(Object.assign(airpod1Body, { position: {
+  x: airpod1StartX,
+  y: airpod1StartY,
+}}));
 
-const airpod2 = Body.create({
-  ...airpod2Body,
-  position: {
-    x: airpod2StartX,
-    y: airpod2StartY,
-  }
-});
+const airpod2 = Body.create(Object.assign(airpod2Body, { position: {
+  x: airpod2StartX,
+  y: airpod2StartY,
+}}));
 
 const boundaryWidth = 10;
 const groundHeight = 95;
