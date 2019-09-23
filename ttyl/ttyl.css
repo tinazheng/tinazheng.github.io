@@ -220,6 +220,13 @@ canvas {
   margin-bottom: 30px;
 }
 
+@media screen and (max-width: 500px) {
+  .ttyl-description {
+    font-size: 36px;
+  }
+}
+
+
 .ttyl-link {
   padding: 10px 20px;
   border-radius: 15px;
