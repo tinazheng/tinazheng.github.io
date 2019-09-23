@@ -14,13 +14,13 @@
   font-weight: bold;
 }
 
-body {
+html, body {
   margin: 0;
 }
 
 .container {
-  height: 100vh;
   width: 100vw;
+  height: 100%;
   position: fixed;
 
   font-family: "Proxima Soft", sans-serif;
@@ -35,11 +35,11 @@ body {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 @media screen and (min-width: 500px) {
-  body {
+  .container {
     overflow-y: hidden;
   }
 }
