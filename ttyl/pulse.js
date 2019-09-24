@@ -1,7 +1,7 @@
 const socialImages = [
   "./discord-purple.svg",
-  "instagram-purple.svg",
-  "twitter-purple.svg"
+  "./instagram-purple.svg",
+  "./twitter-purple.svg"
 ];
 
 // preload images so no blinking effect on hover

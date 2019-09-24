@@ -222,6 +222,7 @@ canvas {
 .ttyl-logo {
   display: flex;
   flex-flow: row;
+  align-self: flex-start;
 
   z-index: 100;
 }
@@ -233,9 +234,10 @@ canvas {
   cursor: pointer;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 499px) {
   .ttyl-logo {
     justify-content: center;
+    align-self: center;
   }
 
   .ttyl-logo > img {
