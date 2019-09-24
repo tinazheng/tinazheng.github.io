@@ -1,20 +1,21 @@
 @font-face {
-  font-family: 'Arial Rounded MT Std';
-  src: url('ArialRoundedMTStd.otf');
+  font-family: "Arial Rounded MT Std";
+  src: url("ArialRoundedMTStd.otf");
 }
 
 @font-face {
-  font-family: 'Proxima Soft';
-  src: url('proximasoft-regular-webfont.woff');
+  font-family: "Proxima Soft";
+  src: url("proximasoft-regular-webfont.woff");
 }
 
 @font-face {
-  font-family: 'Proxima Soft';
-  src: url('proximasoft-bold-webfont.woff');
+  font-family: "Proxima Soft";
+  src: url("proximasoft-bold-webfont.woff");
   font-weight: bold;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   font-family: "Proxima Soft", sans-serif;
   font-weight: bold;
@@ -28,8 +29,12 @@ html, body {
   height: 100%;
   position: fixed;
   margin: 0;
-  background: rgb(105,25,230);
-  background: linear-gradient(180deg, rgba(105,25,230,1) 0%, rgba(72,29,225,1) 100%);
+  background: rgb(105, 25, 230);
+  background: linear-gradient(
+    180deg,
+    rgba(105, 25, 230, 1) 0%,
+    rgba(72, 29, 225, 1) 100%
+  );
   background-repeat: no-repeat;
 
   display: flex;
@@ -44,10 +49,13 @@ html, body {
   }
 }
 
-
 .ttyl-header {
-  background: rgb(105,25,230);
-  background: linear-gradient(180deg, rgba(105,25,230,1) 0%, rgba(72,29,225,1) 100%);
+  background: rgb(105, 25, 230);
+  background: linear-gradient(
+    180deg,
+    rgba(105, 25, 230, 1) 0%,
+    rgba(72, 29, 225, 1) 100%
+  );
 }
 
 canvas {
@@ -112,27 +120,27 @@ canvas {
 }
 
 .pulsate-css {
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 10px solid rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    position: absolute;
-    display: inline-block;
-    width: 350;
-    height: 350;
-    left: 50%;
-    margin-left: -175px;
-    top: 50%;
-    margin-top: -175px;
-    opacity: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 10px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  position: absolute;
+  display: inline-block;
+  width: 350;
+  height: 350;
+  left: 50%;
+  margin-left: -175px;
+  top: 50%;
+  margin-top: -175px;
+  opacity: 0;
 
-    /* Prevent background color leak outs */
-    -webkit-background-clip: padding-box;
-    -moz-background-clip:    padding;
-    background-clip:         padding-box;
-    overflow: hidden;
+  /* Prevent background color leak outs */
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  overflow: hidden;
 }
 
 .pulsate-1 {
@@ -204,11 +212,25 @@ canvas {
   height: 100px;
   margin-left: 20px;
   margin-top: 10px;
+  transition-duration: 0.3s;
+}
+
+.logo {
+  transition-duration: 0.3s;
 }
 
 .ttyl-logo {
   display: flex;
   flex-flow: row;
+
+  z-index: 100;
+}
+
+.ttyl-logo > img:hover,
+.logo:hover {
+  transform: scale(1.15);
+  transition-duration: 0.3s;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 500px) {
@@ -251,6 +273,15 @@ canvas {
 .ttyl-description {
   font-size: 48px;
   margin-bottom: 30px;
+
+  /* disable text highlighting */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
 }
 
 @media screen and (max-width: 500px) {
@@ -259,19 +290,23 @@ canvas {
   }
 }
 
-
 .ttyl-link {
   padding: 10px 20px;
   border-radius: 15px;
   text-decoration: none;
   color: white;
-  transition-duration: .3s;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #00B8F2;
+  transition-duration: 0.3s;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #00b8f2;
 }
 
 .ttyl-link:hover {
   transform: scale(1.15);
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   cursor: pointer;
 }
 
@@ -298,7 +333,7 @@ canvas {
 }
 
 .footer-mobile .ttyl-legal {
-  margin: 0 20px
+  margin: 0 20px;
 }
 
 @media screen and (min-width: 501px) {
@@ -310,7 +345,7 @@ canvas {
 .ttyl-footer-container {
   font-size: 14px;
   align-self: stretch;
-  background-color: #F6F6F9;
+  background-color: #f6f6f9;
   color: black;
   z-index: 1000;
 }
@@ -342,12 +377,12 @@ canvas {
 
 .ttyl-copyright {
   margin: 0 10px 0 20px;
-  font-family: 'Arial Rounded MT Std';
+  font-family: "Arial Rounded MT Std";
 }
 
 .ttyl-legal {
   margin: 0 10px;
-  font-family: 'Proxima Soft';
+  font-family: "Proxima Soft";
 }
 
 .ttyl-footer-social {
@@ -369,36 +404,36 @@ canvas {
 .instagram {
   width: 21px;
   height: 21px;
-  background-image: url('./instagram.svg');
+  background-image: url("./instagram.svg");
   background-repeat: no-repeat;
 }
 
 .instagram:hover {
-  background-image: url('./instagram-purple.svg');
+  background-image: url("./instagram-purple.svg");
   transition: all 0.5s ease;
 }
 
 .twitter {
   width: 21px;
   height: 21px;
-  background-image: url('./twitter.svg');
+  background-image: url("./twitter.svg");
   background-repeat: no-repeat;
 }
 
 .twitter:hover {
-  background-image: url('./twitter-purple.svg');
+  background-image: url("./twitter-purple.svg");
   transition: all 0.5s ease;
 }
 
 .discord {
   width: 21px;
   height: 21px;
-  background-image: url('./discord.svg');
+  background-image: url("./discord.svg");
   background-repeat: no-repeat;
 }
 
 .discord:hover {
-  background-image: url('./discord-purple.svg');
+  background-image: url("./discord-purple.svg");
   transition: all 0.5s ease;
 }
 
@@ -442,7 +477,7 @@ h3 {
 .date {
   font-weight: normal;
   font-size: 20px;
-  color: #ADABBA;
+  color: #adabba;
 }
 
 p {
