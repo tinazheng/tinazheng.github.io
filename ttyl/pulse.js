@@ -3,6 +3,8 @@ const socialImages = [
   "instagram-purple.svg",
   "twitter-purple.svg"
 ];
+
+// preload images so no blinking effect on hover
 socialImages.forEach(imageSrc => {
   const img = new Image();
   img.src = imageSrc;
