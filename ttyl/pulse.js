@@ -226,6 +226,8 @@ const shootOutAirpods = () => {
   );
 
   setTimeout(() => {
+    // sometimes airpods go outside of boundary, and this prevents
+    // them from traveling forever
     if (!isGoingBack) {
       Body.setVelocity(airpod1, ZERO_VELOCITY);
       Body.setVelocity(airpod2, ZERO_VELOCITY);
