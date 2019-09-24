@@ -61,6 +61,7 @@ const airpod1Body = {
 };
 
 const airpod2Body = {
+  // not sure why, but this mass value allows right airpod to behave similarly to left airpod
   mass: 10,
   isSensor: false,
   restitution: 0.6,
@@ -121,13 +122,11 @@ const wallOptions = {
   render: { visible: false }
 };
 
-// create an engine
 var engine = Engine.create({
   positionIterations: 10,
   velocityIterations: 10
 });
 
-// create a renderer
 var render = Render.create({
   element: document.getElementById("container"),
   engine: engine,
@@ -169,6 +168,8 @@ const airpod2 = Body.create(
 );
 
 const boundaryWidth = 10;
+
+// roughly matches height of page footer
 const groundHeight = 95;
 
 const ceiling = Bodies.rectangle(
